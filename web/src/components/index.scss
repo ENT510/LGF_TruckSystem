@@ -1,0 +1,38 @@
+$color1: #1A1B1E;
+$color2: #2e3036;
+$Border: 12px;
+
+
+body {
+    user-select: none;
+    color: #ccc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+    background-image: url("https://i.imgur.com/iPTAdYV.png");
+}
+
+.truck-panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    gap: 10px;
+    width: 1250px;
+    border: 6px solid rgba(55, 65, 81, 0.8),;
+    height: 680px;
+    border-radius: $Border;
+    background-color: hsl(222.2 84% 4.9%);
+    transition: opacity 0.7s ease-in-out, height 0.7s ease-in-out;
+}
+
+.slide-in {
+    opacity: 1;
+}
+
+.slide-out {
+    opacity: 0;
+    pointer-events: none;
+}
