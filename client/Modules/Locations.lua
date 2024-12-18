@@ -51,6 +51,7 @@ function PedMeta:createBlip()
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentSubstringPlayerName(self.blipInfo.name or "Start Truck Job")
         EndTextCommandSetBlipName(self.blipHandle)
+        SetBlipAsShortRange(self.blipHandle, true)
     end
 end
 
