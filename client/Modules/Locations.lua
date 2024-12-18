@@ -9,7 +9,7 @@ function PedMeta:new(model, position, scenario, blipInfo)
     ped.scenario = scenario
     ped.pedHandle = nil
     ped.blipHandle = nil
-    ped.blipInfo = blipInfo 
+    ped.blipInfo = blipInfo
     return ped
 end
 
@@ -30,7 +30,7 @@ function PedMeta:spawn()
         TaskStartScenarioInPlace(self.pedHandle, self.scenario, 0, true)
     end
 
-    self:createBlip() 
+
     return self.pedHandle
 end
 
@@ -39,28 +39,10 @@ function PedMeta:delete()
         DeleteEntity(self.pedHandle)
         self.pedHandle = nil
     end
-    self:removeBlip()
 end
 
-function PedMeta:createBlip()
-    if self.blipInfo then
-        self.blipHandle = AddBlipForCoord(self.position.x, self.position.y, self.position.z)
-        SetBlipSprite(self.blipHandle, self.blipInfo.sprite)
-        SetBlipColour(self.blipHandle, self.blipInfo.color)
-        SetBlipScale(self.blipHandle, 0.8)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentSubstringPlayerName(self.blipInfo.name or "Start Truck Job")
-        EndTextCommandSetBlipName(self.blipHandle)
-        SetBlipAsShortRange(self.blipHandle, true)
-    end
-end
 
-function PedMeta:removeBlip()
-    if self.blipHandle then
-        RemoveBlip(self.blipHandle)
-        self.blipHandle = nil
-    end
-end
+
 
 for zoneName, zoneData in pairs(Config.TruckLocation) do
     local pedData = zoneData.DataPed
@@ -69,9 +51,17 @@ for zoneName, zoneData in pairs(Config.TruckLocation) do
         local ped = PedMeta:new(
             pedData.PedModel,
             pedData.PedPosition,
-            pedData.PedScenario,
-            { sprite = 280, color = 3, name = "Logistics NPC" } 
+            pedData.PedScenario
         )
+
+        local pedBlip = Functions.createBlip({
+            pos = pedData.PedPosition,
+            type = 477,
+            scale = 0.8,
+            color = 3,
+            name = "Start Truck Delivery",
+            setWaypoint = false
+        })
 
         local point = lib.points.new({
             coords = vector3(pedData.PedPosition.x, pedData.PedPosition.y, pedData.PedPosition.z),
@@ -87,8 +77,19 @@ for zoneName, zoneData in pairs(Config.TruckLocation) do
                             icon = 'fa-solid fa-bong',
                             label = LANG.CoreLang("openLogistic"),
                             onSelect = function(data)
-                                local isNew = LGF:TriggerServerCallback("LGF_TruckSystem.isNewPlayer")
-                                if isNew then TriggerServerEvent("LGF_TruckSystem.CreateAvatarAndLevel") end
+                                local playerCoords = GetEntityCoords(PlayerPedId())
+
+
+                                if #(playerCoords - GetEntityCoords(self.ped)) > 3.0 then
+                                    return
+                                end
+
+                                local isNew = LGF:TriggerServerCallback("LGF_TruckSystem.isNewPlayer") 
+
+                                if isNew then
+                                    TriggerServerEvent("LGF_TruckSystem.CreateAvatarAndLevel", GetCurrentResourceName())
+                                end
+
                                 Nui.ShowNui("openLogistic", {
                                     Visible = true,
                                     Tasks = Functions.getAllTasks(zoneName),
@@ -107,5 +108,7 @@ for zoneName, zoneData in pairs(Config.TruckLocation) do
         end
     end
 end
+
+
 
 return PedMeta

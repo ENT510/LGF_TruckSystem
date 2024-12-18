@@ -70,7 +70,7 @@ function Functions.getTasksListByZone(zoneName)
 
         return taskList
     else
-        return nil, "No task list found for the specified zone."
+        return {}, "No task list found for the specified zone."
     end
 end
 

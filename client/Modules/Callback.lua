@@ -383,11 +383,8 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
                                                                     local finalPrice = calculatePrice(dataForPrice,
                                                                         LGF.math:round(FinalDistance, 0) / 1000)
 
-                                                                    TriggerServerEvent("LGF_TruckSystem.AddPlayerMoney",
-                                                                        finalPrice)
-                                                                    TriggerServerEvent(
-                                                                        "LGF_TruckSystem.UpdatePlayerLevel",
-                                                                        IncrementLevel)
+                                                                    TriggerServerEvent("LGF_TruckSystem.AddPlayerMoney", finalPrice, GetCurrentResourceName(), LGF.Player:Index())
+                                                                    TriggerServerEvent( "LGF_TruckSystem.UpdatePlayerLevel", IncrementLevel,GetCurrentResourceName(), LGF.Player:Index())
 
 
                                                                     local DataForTrigger2 = {
@@ -539,8 +536,7 @@ RegisterNUICallback("LGF_TruckSystem.rewardRedeemed", function(body, resultCallb
     if Type == "vehicle" then
         local createdVehicle = Functions.createVehicle(RewardItem, coords)
         local VehicleProps = lib.getVehicleProperties(createdVehicle)
-        TriggerServerEvent("LGF_TruckSystem.UpdateRewardRedeemed", Level, RewardItem, Type, Quantity, VehicleProps,
-            SpawnLocation)
+        TriggerServerEvent("LGF_TruckSystem.UpdateRewardRedeemed", Level, RewardItem, Type, Quantity, VehicleProps, SpawnLocation)
         Nui.ShowNui("openLogistic", {
             Visible = false,
             Tasks = Functions.getAllTasks(CurrentZone),
