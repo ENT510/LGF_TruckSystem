@@ -1,13 +1,15 @@
 PedMeta = {}
 PedMeta.__index = PedMeta
 
-function PedMeta:new(model, position, scenario)
+function PedMeta:new(model, position, scenario, blipInfo)
     local ped = {}
     setmetatable(ped, self)
     ped.model = model
     ped.position = position
     ped.scenario = scenario
     ped.pedHandle = nil
+    ped.blipHandle = nil
+    ped.blipInfo = blipInfo 
     return ped
 end
 
@@ -28,6 +30,7 @@ function PedMeta:spawn()
         TaskStartScenarioInPlace(self.pedHandle, self.scenario, 0, true)
     end
 
+    self:createBlip() 
     return self.pedHandle
 end
 
@@ -36,13 +39,38 @@ function PedMeta:delete()
         DeleteEntity(self.pedHandle)
         self.pedHandle = nil
     end
+    self:removeBlip()
+end
+
+function PedMeta:createBlip()
+    if self.blipInfo then
+        self.blipHandle = AddBlipForCoord(self.position.x, self.position.y, self.position.z)
+        SetBlipSprite(self.blipHandle, self.blipInfo.sprite)
+        SetBlipColour(self.blipHandle, self.blipInfo.color)
+        SetBlipScale(self.blipHandle, 0.8)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentSubstringPlayerName(self.blipInfo.name or "Start Truck Job")
+        EndTextCommandSetBlipName(self.blipHandle)
+    end
+end
+
+function PedMeta:removeBlip()
+    if self.blipHandle then
+        RemoveBlip(self.blipHandle)
+        self.blipHandle = nil
+    end
 end
 
 for zoneName, zoneData in pairs(Config.TruckLocation) do
     local pedData = zoneData.DataPed
 
     if pedData and pedData.PedModel and pedData.PedPosition then
-        local ped = PedMeta:new(pedData.PedModel, pedData.PedPosition, pedData.PedScenario)
+        local ped = PedMeta:new(
+            pedData.PedModel,
+            pedData.PedPosition,
+            pedData.PedScenario,
+            { sprite = 280, color = 3, name = "Logistics NPC" } 
+        )
 
         local point = lib.points.new({
             coords = vector3(pedData.PedPosition.x, pedData.PedPosition.y, pedData.PedPosition.z),
