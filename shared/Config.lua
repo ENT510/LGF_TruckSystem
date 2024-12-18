@@ -151,6 +151,30 @@ Config.InventoryAddItem = function(target, item, quantity)
     end
 end
 
+Config.AddVehicleKey = function(netid, plate)
+    local vehicle = NetworkGetEntityFromNetworkId(netid) -- Entity handle
+
+    if GetResourceState("wasabi_carlock"):find("start") then
+        exports.wasabi_carlock:GiveKey(plate)
+    elseif GetResourceState("resource_name"):find("start") then
+
+    end
+end
+
+
+Config.RemoveVehicleKey = function(netid, plate)
+    local vehicle = NetworkGetEntityFromNetworkId(netid) -- Entity handle
+
+    if GetResourceState("wasabi_carlock"):find("start") then
+        exports.wasabi_carlock:RemoveKey(plate)
+    elseif GetResourceState("resource_name"):find("start") then
+
+    end
+end
+
+
+
+
 -- Configuration for reward items based on player levels
 Config.RewardLevel = {
     [5] = {                 -- Level 5 rewards

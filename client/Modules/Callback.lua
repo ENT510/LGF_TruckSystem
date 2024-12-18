@@ -86,6 +86,8 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
     local createdVehicle = Functions.createVehicle(SelectedTask.VehicleHash, vehicleSpawnPos)
     table.insert(VehicleTruck, createdVehicle)
 
+    Config.AddVehicleKey(NetworkGetNetworkIdFromEntity(createdVehicle),GetVehicleNumberPlateText(createdVehicle))
+
     Shared.Notification(LANG.CoreLang("taskStarted"), LANG.CoreLang("taskStartedDescription"), "top-right", "info")
 
 
@@ -385,6 +387,7 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
 
                                                                     TriggerServerEvent("LGF_TruckSystem.AddPlayerMoney", finalPrice, GetCurrentResourceName(), LGF.Player:Index())
                                                                     TriggerServerEvent( "LGF_TruckSystem.UpdatePlayerLevel", IncrementLevel,GetCurrentResourceName(), LGF.Player:Index())
+                                                                    Config.RemoveVehicleKey(NetworkGetNetworkIdFromEntity(createdVehicle),GetVehicleNumberPlateText(createdVehicle))
 
 
                                                                     local DataForTrigger2 = {
