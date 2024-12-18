@@ -143,7 +143,3 @@ function Functions.destroyCamera()
         Cam = nil
     end
 end
-local env = exports.LGF_Module:Enviroment()
-
-local value = env:requireModule("client/Modules/Locations")
-print(json.encode(value))
