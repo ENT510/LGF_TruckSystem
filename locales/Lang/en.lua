@@ -43,4 +43,6 @@ Locales.en = {
     permissionDenied = "Permission Denied",
     permissionDeniedDescription = "You do not have permission to use this command.",
     notRequired = "Not Required", 
+    levelRequired = "Level Required",
+    levelRequiredDescription = "You need to be level %d to start this delivery task.",
 }
