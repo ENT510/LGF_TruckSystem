@@ -42,4 +42,5 @@ Locales.en = {
     clearRewardsErrorDescription = "Failed to clear redeemed rewards for the player.",
     permissionDenied = "Permission Denied",
     permissionDeniedDescription = "You do not have permission to use this command.",
+    notRequired = "Not Required", 
 }
