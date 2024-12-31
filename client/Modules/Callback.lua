@@ -49,7 +49,11 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
     end
 
     if not (Functions.getPlayerData().CurrentLevel >= requiredLevel) then
-        Shared.Notification(LANG.CoreLang("notRequired"), LANG.CoreLang("alreadyStartedDescription"), "top", "warning")
+        Shared.Notification(LANG.CoreLang("levelRequired"), 
+            LANG.CoreLang("levelRequiredDescription"):format(requiredLevel), 
+            "top", 
+            "warning"
+        )
         return
     end
 

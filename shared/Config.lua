@@ -152,26 +152,28 @@ Config.InventoryAddItem = function(target, item, quantity)
 end
 
 Config.AddVehicleKey = function(netid, plate)
-    local vehicle = NetworkGetEntityFromNetworkId(netid) -- Entity handle
-
+    local vehicle = NetworkGetEntityFromNetworkId(netid)
     if GetResourceState("wasabi_carlock"):find("start") then
         exports.wasabi_carlock:GiveKey(plate)
-    elseif GetResourceState("resource_name"):find("start") then
-
+    elseif GetResourceState("qb-vehiclekeys"):find("start") then
+        TriggerEvent("qb-vehiclekeys:client:AddKeys", plate)
+    elseif GetResourceState("qbx_vehiclekeys"):find("start") then
+        TriggerEvent("qb-vehiclekeys:client:AddKeys", plate)
+    else
+        TriggerEvent("vehiclekeys:client:SetOwner", plate)
     end
 end
-
 
 Config.RemoveVehicleKey = function(netid, plate)
-    local vehicle = NetworkGetEntityFromNetworkId(netid) -- Entity handle
-
+    local vehicle = NetworkGetEntityFromNetworkId(netid)
     if GetResourceState("wasabi_carlock"):find("start") then
         exports.wasabi_carlock:RemoveKey(plate)
-    elseif GetResourceState("resource_name"):find("start") then
-
+    elseif GetResourceState("qb-vehiclekeys"):find("start") then
+        TriggerEvent("qb-vehiclekeys:client:RemoveKeys", plate)
+    elseif GetResourceState("qbx_vehiclekeys"):find("start") then
+        TriggerEvent("qb-vehiclekeys:client:RemoveKeys", plate)
     end
 end
-
 
 
 
