@@ -13,7 +13,7 @@ shared_scripts {
   'locales/initLocales.lua',
   'locales/Lang/*.lua',
   '@ox_lib/init.lua',
-
+  '@mri_Qbox/config.lua',     --  Script mri_Qbox arquivo cfg
 }
 
 client_scripts {

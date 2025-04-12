@@ -43,13 +43,74 @@ Shared.Notification = function(title, message, position, type, source)
     end
 end
 
-
-function Shared.getRandomDeliveryNPC(location)
+function Shared.getRandomDeliveryNPC(id, location)
     local randomIndexName = math.random(#Config.RandomNPCName)
-    local randomIndexDescription = math.random(#Config.RandomDescriptionNPC)
+    local dialogosId1 = {}
+    for _, dialog in ipairs(Config.RandomDescription) do
+        if dialog[1] == id then
+            table.insert(dialogosId1, dialog[2])
+        end
+    end
+    local randomDialog = dialogosId1[math.random(#dialogosId1)]
 
     return {
         name = Config.RandomNPCName[randomIndexName],
-        description = string.format(Config.RandomDescriptionNPC[randomIndexDescription], location)
+        description = string.format(randomDialog, location)
     }
 end
+
+--[[
+function Shared.getRandomDeliveryNPC(id, location)
+
+    local randomIndexName = math.random(#Config.RandomNPCName)
+    if id == 1 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionTrem)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionTrem[randomIndexDescription], location)
+        }
+    elseif id == 2 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionGasolina)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionGasolina[randomIndexDescription], location)
+        }
+    elseif id == 3 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionMadeira)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionMadeira[randomIndexDescription], location)
+        }
+    elseif id == 4 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionVeiculos)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionVeiculos[randomIndexDescription], location)
+        }
+    elseif id == 5 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionNPC)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionNPC[randomIndexDescription], location)
+        }
+    elseif id == 6 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionNPC)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionNPC[randomIndexDescription], location)
+        }
+    elseif id == 7 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionNPC)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionNPC[randomIndexDescription], location)
+        }
+    elseif id == 8 then
+        local randomIndexDescription = math.random(#Config.RandomDescriptionNPC)
+        return {
+            name = Config.RandomNPCName[randomIndexName],
+            description = string.format(Config.RandomDescriptionNPC[randomIndexDescription], location)
+        }
+    end    
+end
+]]
