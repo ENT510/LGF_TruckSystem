@@ -109,7 +109,7 @@ Config.TruckLocation = {
             },
             --  Entregas de Material de contrução
             {
-                IndexTask = 7,                                                                                              --  Índice da tarefa
+                IndexTask = 2,                                                                                              --  Índice da tarefa
                 TaskName = "Entrega Construtora",                                                                    --  Nome da tarefa
                 VehicleModel = "Packer",                                                                                    --  Modelo do veículo
                 VehicleHash = "packer",                                                                                     --  Hash do veículo
@@ -153,7 +153,7 @@ Config.TruckLocation = {
             },
             --  Entrega de carga para trem
             {
-                IndexTask = 8,                                                                                              --  Índice da tarefa
+                IndexTask = 3,                                                                                              --  Índice da tarefa
                 TaskName = "Entrega de Conteiners",                                                                    --  Nome da tarefa
                 VehicleModel = "Hauler",                                                                                    --  Modelo do veículo
                 VehicleHash = "hauler",                                                                                     --  Hash do veículo
@@ -195,7 +195,7 @@ Config.TruckLocation = {
             },
             --  Entregas de Combustível
             {
-                IndexTask = 9,
+                IndexTask = 4,
                 TaskName = "Entregas de Combustível",
                 VehicleModel = "Hauler",
                 VehicleHash = "hauler",
@@ -254,7 +254,7 @@ Config.TruckLocation = {
             },
             --  Entrega de Troncos
             {
-                IndexTask = 10,                                                                                              --  Índice da tarefa
+                IndexTask = 5,                                                                                              --  Índice da tarefa
                 TaskName = "Entrega Madeireira",                                                                    --  Nome da tarefa
                 VehicleModel = "Longhorn",                                                                                    --  Modelo do veículo
                 VehicleHash = "longhorn",                                                                                     --  Hash do veículo
@@ -390,20 +390,20 @@ Config.RandomDescription = {
     { 1, "Você é o novato? Segue para %s. \nDeixarei instruções em seu GPS." },
     { 1, "Ta atrasado! Leve o gerador para %s. \nMarquei em seu GPS." },
 
-    { 7, "Você tem que entregar esse trambolho para a empreenteira logo. Vá até %s. \nVou marcar em seu GPS." },
-    { 7, "Oque é isso? uma furadeira gigante? \n kkk \nDeixa esse trambolho em %s. \nSegue o GPS." },
+    { 2, "Você tem que entregar esse trambolho para a empreenteira logo. Vá até %s. \nVou marcar em seu GPS." },
+    { 2, "Oque é isso? uma furadeira gigante? \n kkk \nDeixa esse trambolho em %s. \nSegue o GPS." },
 
-    { 8, "Você tem uma carga para entregar em uma das estações. Ela fica em %s. \nPreciso que seja rápido então ande logo." },
-    { 8, "Você tem um container para largar em %s. \nVou marcar em seu GPS." },
-    { 8, "Cara quem é você? Não importa, leva o mais rápodo possível esse container para %s. \nSegue seu GPS." },
-    { 8, "Carga quente irmão pega a visão e fica na maciota. \nZoa mané só mais uma das entregas do Michael para %s. \nVou marcar em seu GPS." },
+    { 3, "Você tem uma carga para entregar em uma das estações. Ela fica em %s. \nPreciso que seja rápido então ande logo." },
+    { 3, "Você tem um container para largar em %s. \nVou marcar em seu GPS." },
+    { 3, "Cara quem é você? Não importa, leva o mais rápodo possível esse container para %s. \nSegue seu GPS." },
+    { 3, "Carga quente irmão pega a visão e fica na maciota. \nZoa mané só mais uma das entregas do Michael para %s. \nVou marcar em seu GPS." },
 
-    { 9, "Você abasteceu o tanque do RON. \nAgora preciso que você leve até %s irei marcar em seu GPS para facilitar."},
-    { 9, "Irmão voce esta atrasado, ja fez o abastecimento do tanque do RON? \nTrevor vai ficar boladão comigo vai logo cara. \n Vou marcar em seu GPS mais te adianto que fica em %s."},
-    { 9, "Chego bem na hora. \nTem um carregamento fresquinho do RON. \nVou marcar em seu GPS mais te adianto que fica em %s."},
-    { 9, "Você é o novato!? é cada tralha que me mandam pqp com ERVA DOCE! \nentrega fica em %s. \nAgora essa não sabe onde fica, em que mundo esses moleques vivem. \n Segue o GPS sabe fazer isso pelo menos?"},
+    { 4, "Você abasteceu o tanque do RON. \nAgora preciso que você leve até %s irei marcar em seu GPS para facilitar."},
+    { 4, "Irmão voce esta atrasado, ja fez o abastecimento do tanque do RON? \nTrevor vai ficar boladão comigo vai logo cara. \n Vou marcar em seu GPS mais te adianto que fica em %s."},
+    { 4, "Chego bem na hora. \nTem um carregamento fresquinho do RON. \nVou marcar em seu GPS mais te adianto que fica em %s."},
+    { 4, "Você é o novato!? é cada tralha que me mandam pqp com ERVA DOCE! \nentrega fica em %s. \nAgora essa não sabe onde fica, em que mundo esses moleques vivem. \n Segue o GPS sabe fazer isso pelo menos?"},
 
-    { 10, "Leva tronco todos dia. \nVocê vai longe assim, vai pra %s ou melhor pra pQp. \n kkk \nVou marcar em seu GPS." },
-    { 10, "Você tem uma remessa de toras para levar. \nVai ficar em %s. \nVou marcar em seu GPS." },
-    { 10, "Você gosta mesmo de levar toras grossas. \nFaz favor deixa em %s. \nPega visão ta no seu GPS." },
+    { 5, "Leva tronco todos dia. \nVocê vai longe assim, vai pra %s ou melhor pra pQp. \n kkk \nVou marcar em seu GPS." },
+    { 5, "Você tem uma remessa de toras para levar. \nVai ficar em %s. \nVou marcar em seu GPS." },
+    { 5, "Você gosta mesmo de levar toras grossas. \nFaz favor deixa em %s. \nPega visão ta no seu GPS." },
 }

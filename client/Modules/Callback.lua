@@ -129,6 +129,7 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
     local BoxCoords = SelectedTask.DeliveryLocation.LoadVehicle
     local isInArea = false
     local isInAreatoUnload = false
+    trailerHealth = SelectedTask.trailerHealth
 
     local trailer = Functions.createVehicle(SelectedTask.trailerHash,
         vector4(BoxCoords.x, BoxCoords.y, BoxCoords.z, BoxCoords.w))
@@ -136,7 +137,7 @@ RegisterNUICallback("LGF_TruckSystem.startTask", function(data, resultCallback)
     -- Add trailer health check thread
     CreateThread(function()
         while DoesEntityExist(trailer) and MissionStarted do
-            local currentHealth = SetEntityHealth(trailer, trailerHealth.trailerHealth)
+            local currentHealth = GetEntityHealth(trailer)
 
             -- Se a saúde atual for menor que a última saúde conhecida
             if currentHealth < trailerHealth then
