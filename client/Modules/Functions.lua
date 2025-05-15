@@ -70,6 +70,32 @@ function Functions.createBlip(data)
     return blip
 end
 
+
+function Functions.markers(data)
+    local Marker = DrawMarker(
+        data.icon,                          -- Tipo do marker
+        data.x, data.y, data.z - 2.0,       -- Posição
+        -data.w, 0.0, 0.0,                  -- Direção
+        90.0, 0.0, 0.0,                     -- Rotação
+        4.0, 4.0, 15.0,                     -- Escala
+        data.r, data.g, data.b, 100,        -- Cor verde
+        false, false, 2, false, nil, nil, false
+    )
+    return Marker
+end
+
+
+function Functions.BlipRastreador(data)
+    truckBlip = AddBlipForEntity(data.truck)
+    SetBlipSprite(truckBlip, data.type) -- Ícone de caminhão
+    SetBlipColour(truckBlip, data.color) -- Cor vermelha
+    SetBlipScale(truckBlip, data.scale) -- Tamanho do blip
+    SetBlipAsShortRange(truckBlip, false)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(data.name)
+    EndTextCommandSetBlipName(truckBlip)
+end
+
 function Functions.createVehicle(vehicleModel, coords)
     local createdVehicle = LGF:CreateEntityVehicle({
         model = vehicleModel,
